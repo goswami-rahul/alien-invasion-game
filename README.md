@@ -9,3 +9,7 @@ sudo python3 -m pip install pygame --user
 
 then run the game using :                                             
 python3 game.py
+
+CONTRIBUTIONS:
+Any ideas to add new feature or enhance the current one are appreciated.
+You can fork the repository and add pull requests.
