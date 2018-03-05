@@ -20,8 +20,8 @@ You can fork the repository and add pull requests.
 <!DOCTYPE html>
 <html>
 <body>
-	<h1>Directory Tree</h1><p>
-	<a href=".">.</a><br>
+	<p>
+	<a href=".">alien-invasion-game</a><br>
 	├── <a href="./alien_invasion/">alien_invasion</a><br>
 	│   ├── <a href="./alien_invasion/alien.py">alien.py</a><br>
 	│   ├── <a href="./alien_invasion/bullets.py">bullets.py</a><br>
@@ -44,7 +44,6 @@ You can fork the repository and add pull requests.
 	└── <a href="./README.md">README.md</a><br>
 	<br><br>
 	</p>
-	<p>
 
 3 directories, 17 files
 </body>
