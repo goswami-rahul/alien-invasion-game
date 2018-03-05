@@ -21,7 +21,7 @@ You can fork the repository and add pull requests.
 <html>
 <body>
 	<p>
-	<a href=".">alien-invasion-game</a><br>
+	<a href="."></a><br>
 	├── <a href="./alien_invasion/">alien_invasion</a><br>
 	│   ├── <a href="./alien_invasion/alien.py">alien.py</a><br>
 	│   ├── <a href="./alien_invasion/bullets.py">bullets.py</a><br>
