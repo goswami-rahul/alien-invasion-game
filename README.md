@@ -18,6 +18,12 @@ You can fork the repository and add pull requests.
 ## Directory Tree
 
 * [alien_invasion](alien_invasion)
+    - [fonts](alien_invasion/fonts)
+        - [ContrailOne.ttf](alien_invasion/fonts/ContrailOne.ttf)
+        - [PoiretOne.ttf](alien_invasion/fonts/PoiretOne.ttf)
+        - [RammettoOne.ttf](alien_invasion/fonts/RammettoOne.ttf)
+        - [RussoOne.ttf](alien_invasion/fonts/RussoOne.ttf)
+        - [Viga.ttf](alien_invasion/fonts/Viga.ttf)
     - [images](alien_invasion/images)
         - [alien1.png](alien_invasion/images/alien1.png)
         - [alien2.png](alien_invasion/images/alien2.png)
