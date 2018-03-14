@@ -4,30 +4,32 @@ import pygame
 class Button:
     """Represents a button on the screen."""
 
-    _fonts = "freeself, freesans, dejavusansmono, freemono"
-
-    def __init__(self, screen: pygame.SurfaceType, msg: str, b_color: tuple = ()):
+    def __init__(self, screen: pygame.SurfaceType, msg: str, size=48, b_color=(-1, -1, -1)):
         self.screen = screen
         self.screen_rect = screen.get_rect()
 
-        # Dimensions and properties of button.
-        self.width = 150
-        self.height = 50
+        # Properties of button.
         self.button_transparency = 80
-        self.button_color = b_color or (0, 255, 0, self.button_transparency)
+        self.button_color = (0, 255, 0) if b_color == (-1, -1, -1) else b_color
+        if len(self.button_color) == 3:
+            self.button_color += (self.button_transparency, )      # add alpha channel
         self.text_color = (255, 255, 255)
-        self.font = pygame.font.SysFont(self._fonts, 48)
 
-        self.rect = pygame.Rect(0, 0, self.width, self.height)
-        self.rect.center = self.screen_rect.center
+        self.font = pygame.font.Font('fonts/RussoOne.ttf', size)
 
         self.prep_msg(msg)
 
+        button_width = self.msg_image_rect.width + 30
+        button_height = self.msg_image_rect.height + 10
+
+        self.rect = pygame.Rect(0, 0, button_width, button_height)
+        self.rect.center = self.msg_image_rect.center
+
     def prep_msg(self, msg: str):
-        """Prepare msg into rendered image and position it at button center."""
+        """Prepare button text into rendered image and position it at button center."""
         self.msg_image = self.font.render(msg, True, self.text_color)
         self.msg_image_rect = self.msg_image.get_rect()
-        self.msg_image_rect.center = self.rect.center
+        self.msg_image_rect.center = self.screen_rect.center
 
     def draw_button(self):
         """Draw button with msg."""

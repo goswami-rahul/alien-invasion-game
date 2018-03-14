@@ -5,6 +5,8 @@ import time
 
 import pygame
 import pygame.sprite
+
+# for annotations
 from pygame.event import EventType
 from pygame.sprite import Group
 
@@ -17,7 +19,7 @@ from ship import Ship
 
 
 def check_events(ai_settings: Settings, stats: GameStats, game_items: GameItems):
-    """Responds to keypresses and mouse events."""
+    """Respond to keypresses and mouse events."""
 
     # Watch for keyboard and mouse events.
     for event in pygame.event.get():
@@ -35,7 +37,7 @@ def check_events(ai_settings: Settings, stats: GameStats, game_items: GameItems)
 
 
 def quit_game(stats: GameStats):
-    """Saves the highscore and exits game"""
+    """Save the highscore and exit the game."""
     filename = os.path.join('.', 'save/highscore.txt')
     with open(filename, 'w') as f:
         f.write(str(stats.high_score))
@@ -127,6 +129,7 @@ def check_play_button(ai_settings: Settings, stats: GameStats, game_items: GameI
 
 
 def update_bullets(ai_settings: Settings, stats: GameStats, game_items: GameItems):
+    """Update the status and position of bullets."""
     game_items.bullets.update(stats)
     # Get rid of bullets that have disappeared.
     for bullet in game_items.bullets.copy():
@@ -136,6 +139,8 @@ def update_bullets(ai_settings: Settings, stats: GameStats, game_items: GameItem
 
 
 def check_bullet_alien_collision(ai_settings: Settings, stats: GameStats, game_items: GameItems):
+    """Update the game when a bullet hits an alien(s)."""
+
     # Get rid of bullet and aliens that have collided.
     collision = pygame.sprite.groupcollide(game_items.bullets, game_items.aliens, True, True)
     if collision:
@@ -154,7 +159,7 @@ def check_bullet_alien_collision(ai_settings: Settings, stats: GameStats, game_i
 
 
 def update_aliens(ai_settings: Settings, stats: GameStats, game_items: GameItems):
-    """Updates position for each alien."""
+    """Update position for each alien."""
     check_fleet_edges(ai_settings, game_items.aliens)
     game_items.aliens.update(stats)
 
@@ -165,7 +170,7 @@ def update_aliens(ai_settings: Settings, stats: GameStats, game_items: GameItems
 
 
 def fire_bullets(ai_settings: Settings, game_items: GameItems):
-    """Fires a bullet if limit not reached."""
+    """Fire a bullet if limit not reached."""
 
     # Create a new bullet and add it to the bullets group.
     if len(game_items.bullets) < ai_settings.bullets_allowed:
@@ -187,6 +192,8 @@ def create_fleet(ai_settings: Settings, game_items: GameItems):
 
 def create_alien(ai_settings: Settings, game_items: GameItems
                  , alien_number: int, row_number: int):
+    """Create a single Alien."""
+
     RAND_NO_X = random.randint(-ai_settings.alien_random_x, ai_settings.alien_random_x)
     RAND_NO_Y = random.randint(-ai_settings.alien_random_y, ai_settings.alien_random_y)
 
@@ -207,20 +214,23 @@ def create_alien(ai_settings: Settings, game_items: GameItems
 
 
 def get_number_aliens_x(ai_settings: Settings, alien_width: int):
+    """Return number of aliens that can fit horizontally."""
+
     available_space_x = ai_settings.screen_width - 2 * alien_width
-    number_aliens_x = int(available_space_x / (ai_settings.alien_density_factor_x * alien_width))
-    return number_aliens_x
+    number_aliens_x = available_space_x / (alien_width * ai_settings.alien_density_factor_x)
+    return int(number_aliens_x)
 
 
 def get_number_rows(ai_settings: Settings, ship_height: int, alien_height: int):
+    """Return number of rows of aliens that can fit vertically."""
     available_space_y = (ai_settings.screen_height - alien_height * ai_settings.alien_ship_dist_factor
                          - alien_height - ship_height)
-    number_rows = int(available_space_y / (alien_height * ai_settings.alien_density_factor_y))
-    return number_rows
+    number_rows = available_space_y / (alien_height * ai_settings.alien_density_factor_y)
+    return int(number_rows)
 
 
 def change_fleet_directions(ai_settings: Settings, aliens: Group, direction: int):
-    """Drops down the fleet and change the direction."""
+    """Drop down the fleet and change the direction."""
     for alien in aliens:
         if alien.y <= alien.drop_dist:
             ai_settings.alien_direction_y = 1
@@ -231,7 +241,7 @@ def change_fleet_directions(ai_settings: Settings, aliens: Group, direction: int
 
 
 def check_fleet_edges(ai_settings: Settings, aliens: Group):
-    """Responds appropriately when any alien reaches edge."""
+    """Respond appropriately when any alien reaches edge."""
     for alien in aliens:
         if alien.check_edges('left'):
             change_fleet_directions(ai_settings, aliens, direction=+1)
@@ -242,14 +252,14 @@ def check_fleet_edges(ai_settings: Settings, aliens: Group):
 
 
 def ship_hit(ai_settings: Settings, stats: GameStats, game_items: GameItems):
-    """Responds to ship being hit by an alien."""
+    """Respond to ship being hit by an alien."""
 
     if stats.ships_left > 0:
 
         # Decrement ships left.
         stats.ships_left -= 1
 
-        # Updates scorecard.
+        # Update scorecard.
         game_items.sb.prep_ships()
 
         # Empty bullets and aliens.
@@ -279,7 +289,7 @@ def check_aliens_bottom(ai_settings: Settings, stats: GameStats, game_items: Gam
 
 
 def check_high_score(stats: GameStats, game_items: GameItems):
-    """Check for a high score."""
+    """Check if high score is achieved."""
     if stats.score > stats.high_score:
         stats.high_score = stats.score
         game_items.sb.prep_high_score()

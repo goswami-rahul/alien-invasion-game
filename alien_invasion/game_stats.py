@@ -16,12 +16,17 @@ class GameStats:
         self.broke_highscore = False
         self.game_active = False
 
-        filename = os.path.join('.', 'save/highscore.txt')
+        filename = 'save/highscore.txt'
         try:
             with open(filename, 'r') as f:
                 self.prev_high_score = int(f.read())
         except FileNotFoundError:
-            print('no save file found.')
+            print('No save file found.')
+            print("Creating new save file 'save/highscore.txt'")
+            if not os.path.exists('save'):
+                os.makedirs('save')
+            with open('save/highscore.txt', 'w+') as f:
+                f.write('0')
             self.prev_high_score = 0
 
         self.high_score = self.prev_high_score
