@@ -25,7 +25,7 @@ You can fork the repository and add pull requests.
     - [save](alien_invasion/save)
         - [highscore.txt](alien_invasion/save/highscore.txt)
     - [\_\_init\_\_.py](alien_invasion/__init__.py)
-    - [deepeshgiri119@gmail.com](alien_invasion/alien.py)
+    - [alien.py](alien_invasion/alien.py)
     - [bullets.py](alien_invasion/bullets.py)
     - [button.py](alien_invasion/button.py)
     - [game.py](alien_invasion/game.py)
