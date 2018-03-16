@@ -1,4 +1,6 @@
 # alien-invasion-game
+[![Open Source Helpers](https://www.codetriage.com/goswami-rahul/alien-invasion-game/badges/users.svg)](https://www.codetriage.com/goswami-rahul/alien-invasion-game)
+
 A basic game similiar to Galaga written in Python3 using Pygame. 
 This project uses completely Object-oriented approach and the code is well documented.
 I will continue to add new features to this game. Suggestions are welcomed !! :)
