@@ -6,18 +6,26 @@ This project uses completely Object-oriented approach and the code is well docum
 I will continue to add new features to this game. Suggestions are welcomed !! :)
 
 
+First create your fork of the repository, then clone using:
+```
+cd path/to/folder
+git clone https://github.com/username/alien-invasion-game.git
+```
+
 To run the game, ensure that you have python3 and pygame library installed in 
 your system.
 
-### To install pygame do :                                    
+### To install pygame do :
 `sudo python3 -m pip install pygame --user`
 
-### then run the game using :                                             
-`python3 game.py`
-
+### then run the game using :  
+```
+cd path/to/folder/alien-invasion-game/alien_invasion                                           
+python3 game.py
+```
 ## Contributions:
 Any ideas to add new feature or enhance the current one are appreciated.
-You can fork the repository and add pull requests.
+First fork the repo. Then you can [add pull requests][pr] or [open issues][issue] anytime you want.
 
 ## Directory Tree
 
@@ -44,3 +52,6 @@ You can fork the repository and add pull requests.
     - [scorecard.py](alien_invasion/scorecard.py)
     - [settings.py](alien_invasion/settings.py)
     - [ship.py](alien_invasion/ship.py)
+
+[pr]: https://github.com/goswami-rahul/alien-invasion-game/compare
+[issue]: https://github.com/goswami-rahul/alien-invasion-game/issues/new

@@ -17,7 +17,7 @@ class Scorecard:
         self.screen_rect = screen.get_rect()
         self.ai_settings = ai_settings
         self.stats = stats
-        self.score_ship_size = self.ai_settings.score_ship_size
+        self.score_ship_size = self.ai_settings.score_ship_size  # size of ship in the scoreboard.
         self.dur_highscore_msg = 3000        # duration of highscore msg = 3 sec
 
         # Font settings.
@@ -29,7 +29,7 @@ class Scorecard:
         self.prep_images()
 
     def prep_images(self):
-        """Prepare the """
+        """Prepare the scorecard."""
         self.prep_score()
         self.prep_high_score()
         self.prep_level()
@@ -56,7 +56,7 @@ class Scorecard:
         self.print_high_score_msg()
 
     def print_high_score_msg(self):
-
+        """Display the high score message when broken."""
         if self.stats.score > self.stats.prev_high_score and not self.stats.broke_highscore:
             self.stats.time_to_blit = pygame.time.get_ticks() + self.dur_highscore_msg
             self.stats.broke_highscore = True
@@ -84,6 +84,7 @@ class Scorecard:
         self.new_high_score_rect.y = self.high_score_rect.bottom + 4
 
     def prep_level(self):
+        """Prepare the image of current level."""
         level_str = "Level: {:d}".format(self.stats.level)
         self.level_image = self.font.render(level_str, True, self.font_color)
         self.level_rect = self.level_image.get_rect()
