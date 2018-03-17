@@ -29,13 +29,14 @@ class Scorecard:
         self.prep_images()
 
     def prep_images(self):
+        """Prepare the """
         self.prep_score()
         self.prep_high_score()
         self.prep_level()
         self.prep_ships()
 
     def prep_score(self):
-        """Prepare the image of scorecard."""
+        """Prepare the image of score."""
         rounded_score = round(self.stats.score, -1)
         score_str = "{:,}".format(rounded_score)
 

@@ -18,7 +18,7 @@ class Settings:
         self.bullet_width = 4
         self.bullet_height = 20
         self.bullet_color = (255, 255, 255)
-        self.bullets_allowed = 5
+        self.bullets_allowed = 5   # bullets allowed in the same time on screen
 
         # Alien settings.
         self.alien_size = (80, 50)
