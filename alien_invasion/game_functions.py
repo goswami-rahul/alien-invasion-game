@@ -75,20 +75,27 @@ def update_screen(ai_settings: Settings, stats: GameStats, game_items: GameItems
 
 def check_keydown_events(event: EventType, ai_settings: Settings
                          , stats: GameStats, game_items: GameItems):
+    """Respond when key is being pressed."""
     if event.key == pygame.K_RIGHT:
         # Move ship to the right.
         game_items.ship.moving_right = True
+
     elif event.key == pygame.K_LEFT:
         # Move ship to the left.
         game_items.ship.moving_left = True
+
     elif event.key == pygame.K_SPACE:
-        fire_bullets(ai_settings, game_items)
+        fire_bullet(ai_settings, game_items)
 
     elif event.key == pygame.K_q:
         quit_game(stats)
 
+    elif event.key == pygame.K_RETURN:  # ENTER key
+        start_new_game(ai_settings, stats, game_items)
+
 
 def check_keyup_events(event: EventType, ship: Ship):
+    """Respond when key is stopped being pressed."""
     if event.key == pygame.K_RIGHT:
         ship.moving_right = False
     elif event.key == pygame.K_LEFT:
@@ -96,15 +103,19 @@ def check_keyup_events(event: EventType, ship: Ship):
 
 
 def check_mousedown_events(ai_settings: Settings, stats: GameStats, game_items: GameItems):
+    """Respond when mouse button is pressed."""
     mouse_x, mouse_y = pygame.mouse.get_pos()
-    check_play_button(ai_settings, stats, game_items, mouse_x, mouse_y)
+
+    # Start new game when "Play" button is clicked.
+    play_button_clicked = game_items.play_button.rect.collidepoint(mouse_x, mouse_y)
+    if play_button_clicked:
+        start_new_game(ai_settings, stats, game_items)
 
 
-def check_play_button(ai_settings: Settings, stats: GameStats, game_items: GameItems
-                      , mouse_x: int, mouse_y: int):
-    """Start a new game when the player clicks play_button."""
-    button_clicked = game_items.play_button.rect.collidepoint(mouse_x, mouse_y)
-    if button_clicked and not stats.game_active:
+def start_new_game(ai_settings, stats, game_items):
+    """Start a new game when the player clicks play_button or presses Enter key."""
+
+    if not stats.game_active:
         # Resets game statistics.
         stats.reset_stats()
         stats.game_active = True
@@ -169,7 +180,7 @@ def update_aliens(ai_settings: Settings, stats: GameStats, game_items: GameItems
     check_aliens_bottom(ai_settings, stats, game_items)
 
 
-def fire_bullets(ai_settings: Settings, game_items: GameItems):
+def fire_bullet(ai_settings: Settings, game_items: GameItems):
     """Fire a bullet if limit not reached."""
 
     # Create a new bullet and add it to the bullets group.

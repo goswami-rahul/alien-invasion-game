@@ -22,8 +22,7 @@ class GameItems:
         # Default initializations for game items.
         # Initialize screen.
         flags = pygame.HWSURFACE | pygame.DOUBLEBUF    # | pygame.FULLSCREEN
-        self.screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height)
-                                              , flags)
+        self.screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height), flags)
         pygame.display.set_caption("Alien Invasion Game")
 
         # Initialize ship.

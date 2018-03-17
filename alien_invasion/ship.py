@@ -8,23 +8,23 @@ from settings import Settings
 
 class Ship(Sprite):
     def __init__(self, ai_settings: Settings, screen: pygame.SurfaceType
-                 , custom_size: tuple = (0, 0), image_name="images/ship1.png"):
+                 , size=(0, 0), image_name="images/ship1.png"):
         """Initialize the ship and set its starting position."""
         super().__init__()
         self.screen = screen
         self.ai_settings = ai_settings
 
         # Load the ship image and get its rect.
-        fullname = os.path.join(os.getcwd(), image_name)
+        # fullname = os.path.join(os.getcwd(), image_name
         try:
-            self.image = pygame.image.load(fullname)
+            self.image = pygame.image.load(image_name)
         except pygame.error as e:
-            print('Cannot load image: ', fullname)
+            print('Cannot load image: ', image_name)
             print(e)
             raise SystemExit
-        if custom_size == (0, 0):
-            custom_size = ai_settings.ship_size
-        self.image = pygame.transform.scale(self.image, custom_size)
+        if size == (0, 0):
+            size = ai_settings.ship_size
+        self.image = pygame.transform.scale(self.image, size)
 
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
