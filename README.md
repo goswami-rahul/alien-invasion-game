@@ -17,7 +17,9 @@ To run the game, ensure that you have python3 and pygame library installed in
 your system.
 
 ### To install pygame do :
-`sudo python3 -m pip install pygame --user`
+```
+sudo python3 -m pip install pygame --user
+```
 
 ### then run the game using :  
 ```
@@ -55,7 +57,7 @@ First fork the repo. Then you can [add pull requests][pr] or [open issues][issue
     - [ship.py](alien_invasion/ship.py)
 
 
-MIT License
+<em>MIT License</em>
 
 Copyright (c) 2018 Rahul Goswami
 
