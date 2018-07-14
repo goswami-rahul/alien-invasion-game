@@ -5,7 +5,7 @@ A basic game similiar to Galaga written in Python3 using Pygame.
 This project uses completely Object-oriented approach and the code is well documented.
 I will continue to add new features to this game. Suggestions are welcomed !! :)
 
-<img src="assets/demo.gif" width=1000>
+<img src="https://github.com/goswami-rahul/alien-invasion-game/blob/master/assets/demo.gif" width=1000>
 
 First create your fork of the repository, then clone using:
 ```
